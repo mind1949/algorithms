@@ -3,10 +3,23 @@ package sort
 // InsertionSort 插入排序
 func InsertionSort(s []int) {
 	n := len(s)
-	for i := 0; i < n-1; i++ {
-		for j := i + 1; j > 0 && s[j] < s[j-1]; j-- {
-			s[j], s[j-1] = s[j-1], s[j]
+	if n <= 1 {
+		return
+	}
+	for i := 1; i < n; i++ {
+		key := s[i]
+		j := i - 1
+		for {
+			if s[j] <= key {
+				break
+			}
+			s[j+1] = s[j]
+			j--
+			if j < 0 {
+				break
+			}
 		}
+		s[j+1] = key
 	}
 }
 
