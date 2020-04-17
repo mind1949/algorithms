@@ -9,15 +9,8 @@ func InsertionSort(s []int) {
 	for i := 1; i < n; i++ {
 		key := s[i]
 		j := i - 1
-		for {
-			if s[j] <= key {
-				break
-			}
+		for ; j >= 0 && s[j] > key; j-- {
 			s[j+1] = s[j]
-			j--
-			if j < 0 {
-				break
-			}
 		}
 		s[j+1] = key
 	}
