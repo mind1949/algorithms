@@ -25,3 +25,13 @@ func TestHeapSort(t *testing.T) {
 		t.Errorf("got %v", s)
 	}
 }
+
+func TestSelectionSort(t *testing.T) {
+	data := ints
+	s := data[:]
+	SelectionSort(s)
+	if !IsSorted(s) {
+		t.Errorf("sorted %v", ints[0:])
+		t.Errorf("got %v", s)
+	}
+}

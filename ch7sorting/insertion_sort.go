@@ -7,8 +7,8 @@ func InsertionSort(s []int) {
 		return // c2*0或1
 	}
 	for i := 1; i < n; i++ { // c3*n
-		key := s[i] // c4*(n-1)
-		j := i - 1 // c5*(n-1)
+		key := s[i]                       // c4*(n-1)
+		j := i - 1                        // c5*(n-1)
 		for ; j >= 0 && s[j] > key; j-- { // c6*(t(0)+t(1)...+t(n-2))
 			s[j+1] = s[j] // c7*(t(0)+t(1)...+t(n-2)-(n-1))
 		}
