@@ -2,15 +2,15 @@ package sort
 
 // SelectionSort 选择排序
 func SelectionSort(s []int) {
-	n := len(s)
-	for i := 0; i < n-1; i++ {
-		minIdx := i
-		for j := i + 1; j < n; j++ {
-			if s[j] < s[minIdx] {
-				minIdx = j
+	n := len(s)                // c0*1
+	for i := 0; i < n-1; i++ { // c1*n
+		minIdx := i                  // c2*1
+		for j := i + 1; j < n; j++ { // c3*(n+n-1+n-2+...+2)
+			if s[j] < s[minIdx] { // c4*(n-1+n-2+n-3+...+1)
+				minIdx = j // c5*(n-1+n-2+n-3+...+1)
 			}
 		}
-		s[i], s[minIdx] = s[minIdx], s[i]
+		s[i], s[minIdx] = s[minIdx], s[i] // c6*(n-1)
 	}
 }
 
@@ -29,5 +29,12 @@ func SelectionSort(s []int) {
 
 /*
 分析:
-
+假设每一行的运行时间为常量时间ci,
+所以总时间可以用如下公式表示:
+T(n)= c0+c1*n+c2+c3*(n+n-1+n-2+...+2)+c4*(n-1+n-2+n-3+...+1)+c5*(n-1+n-2+n-3+...+1)+c6*(n-1)
+	= c0+c1*n+c2+c3(n+2)*(n-1)/2+c4*(n)*(n-1)/2+c5*(n)*(n-1)/2+c6*n-c6
+	= c0+c1*n+c2+(c3/2)*(n^2+n-2)+(c4/2)*(n^2-n)+(c5/2)*(n^2-n)+c6*n-c6
+	= (c3/2+c4/2+c5/2)*n^2 + (c1+c3/2-c4/2-c5/2+c6)*n + (c0+c2-c3-c6)
+	= a*n^2+b*n+c
+最坏情况与最好情况的量级军事`n^2`, 用符号表示是`Θ(n^2)`
 */
