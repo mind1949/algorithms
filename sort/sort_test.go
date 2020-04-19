@@ -35,3 +35,27 @@ func TestSelectionSort(t *testing.T) {
 		t.Errorf("got %v", s)
 	}
 }
+
+func TestMerge(t *testing.T) {
+	data := []int{1, 2, 3, 4, 5, 6}
+	m := len(data) / 2
+	merge(data[:m], data[m:])
+	expect := []int{1, 2, 3, 4, 5, 6}
+	for i, v := range expect {
+		if data[i] != v {
+			t.Errorf("expect %v", expect)
+			t.Errorf("got %v", data)
+			return
+		}
+	}
+}
+
+func TestMergeSort(t *testing.T) {
+	data := ints
+	s := data[:]
+	MergeSort(s)
+	if !IsSorted(s) {
+		t.Errorf("sorted %v", ints[0:])
+		t.Errorf("got %v", s)
+	}
+}
