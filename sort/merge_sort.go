@@ -7,19 +7,22 @@ func MergeSort(s []int) {
 		return
 	}
 
+	// 分解
 	m := n / 2
 	l := s[:m]
 	r := s[m:]
+	// 解决
 	MergeSort(l)
 	MergeSort(r)
+	// 合并
 	merge(l, r)
 }
 
 // merge 合并
 func merge(l, r []int) {
-	tmp := make([]int, len(l)+len(r))
 	i := 0
 	j := 0
+	tmp := make([]int, len(l)+len(r))
 	for k := 0; k < len(tmp); k++ {
 		if i == len(l) {
 			copy(tmp[k:], r[j:])
