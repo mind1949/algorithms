@@ -59,3 +59,13 @@ func TestMergeSort(t *testing.T) {
 		t.Errorf("got %v", s)
 	}
 }
+
+func TestQuickSort(t *testing.T) {
+	data := ints
+	s := data[:]
+	QuickSort(s, 0, len(s)-1)
+	if !IsSorted(s) {
+		t.Errorf("sorted %v", ints[0:])
+		t.Errorf("got %v", s)
+	}
+}

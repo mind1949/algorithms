@@ -18,6 +18,7 @@ func HeapSort(s []int) {
 func buildMaxHeapify(s []int) {
 	h := len(s) - 1
 	// 创建一个堆
+	// 可以证明s[(h-1)/2]是索引最大的非叶子节点
 	for i := (h - 1) / 2; i >= 0; i-- {
 		maxHeapify(s, i, h)
 	}
