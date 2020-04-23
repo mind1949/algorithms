@@ -1,4 +1,4 @@
-package sort
+package algorithms
 
 func IsSorted(slice []int) bool {
 	n := len(slice)
